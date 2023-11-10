@@ -1,8 +1,25 @@
 import Card from "@/components/Card";
+import { useContext,useEffect } from "react";
+import {ContextCard } from '@/context/useCards';
+import Depoimento from "@/components/Depoimento";
 
 export default function Home() {
+  
+  const contexto = useContext(ContextCard);
+
+  const handleAddItem = ()=>{
+    const card4 = {titulo: "Titulo# 4",preco: 0, descricao:"Descrição do Titulo #04"};
+    contexto.setState(card4);
+    console.log("chamando adicionar");
+    console.log(contexto.state);
+  }
+
+  // useEffect(()=>{
+  // },state);
+
   return (
     <main className="d-flex flex-column">
+      <button onClick={handleAddItem}>add</button>
       <h1 className="h1-centralizado fs-1 fw-lighter mt-sm-5">
         Viagens nacionais e internacionais
       </h1>
@@ -94,8 +111,8 @@ export default function Home() {
                   <div className="inner-area simples">
                     <img
                       className="img-fluid rounded object-fit-fill"
-                      src="/agenciamvc/assets/img/${pacote.imagem}"
-                      alt="${pacote.imagem}"
+                      src="http://localhost:3000/img/noronha.jpg"
+                      alt="noronha"
                     />
                   </div>
                 </div>
@@ -224,16 +241,14 @@ export default function Home() {
             <span className="h2-destaque fw-bold">aéreo + hotel</span>
           </h2>
           <div className="w-100 h-auto d-flex container-card">
-            {/* <p:foreach items="${pacotes}" var="pacote">
-                <p:if test="${pacote.valorDesconto == 20}"> */}
             <div className="card basic">
               <div className="price-section">
                 <div className="price-area simples">
                   <div className="inner-area simples">
                     <img
                       className="img-fluid rounded object-fit-fill"
-                      src="/agenciamvc/assets/img/${pacote.imagem}"
-                      alt="${pacote.imagem}"
+                      src="http://localhost:3000/img/noronha.jpg"
+                      alt="noronha"
                     />
                   </div>
                 </div>
@@ -288,8 +303,8 @@ export default function Home() {
                 <button className="simples">Comprar</button>
               </div>
             </div>
-            {/* </p:if>
-              </p:foreach> */}
+            
+
             <div className="card premium">
               <div className="rib">
                 <div className="ribbon">
@@ -363,16 +378,16 @@ export default function Home() {
             <span className="h2-destaque fw-bold">até 40% de desconto</span>
           </h2>
           <div className="w-100 h-auto d-flex container-card">
-            {/* <p:foreach items="${pacotes}" var="pacote">
-                <p:if test="${pacote.valorDesconto == 40}"> */}
+            
+
             <div className="card basic">
               <div className="price-section">
                 <div className="price-area simples">
                   <div className="inner-area simples">
                     <img
                       className="img-fluid rounded object-fit-fill"
-                      src="/agenciamvc/assets/img/${pacote.imagem}"
-                      alt="${pacote.imagem}"
+                      src="http://localhost:3000/img/noronha.jpg"
+                      alt="noronha"
                     />
                   </div>
                 </div>
@@ -427,44 +442,11 @@ export default function Home() {
                 <button className="simples">Comprar</button>
               </div>
             </div>
-            {/* </p:if>
-              </p:foreach> */}
+            
           </div>
         </div>
       </section>
-      {/* TODO: Figure com Depoimentos dos clientes  */}
-      <div className="row w-100 h-auto p-5 bg-container-figure">
-        <figure className="flex-column align-items-center col-sm-12 col-md-4">
-          <blockquote className="blockquote ">
-            <p>É sempre um prazer viajar com vocês.</p>
-          </blockquote>
-          <figcaption className="blockquote-footer">
-            Brazil, <cite title="Source Title">Ricardo E.</cite>
-          </figcaption>
-        </figure>
-        <figure className="flex-column align-items-center col-sm-12 col-md-4">
-          <blockquote className="blockquote">
-            <p>
-              Viajo sempre que posso, recomendo essa agência possui otimo
-              atendimento e nunca me deixou na mão..
-            </p>
-          </blockquote>
-          <figcaption className="blockquote-footer">
-            Brazil, <cite title="Source Title">Mariana L.</cite>
-          </figcaption>
-        </figure>
-        <figure className="flex-column align-items-center col-sm-12 col-md-4">
-          <blockquote className="blockquote">
-            <p>
-              A agencia muito boa, possui preços razoavelmente bons para os
-              serviços que eles oferecem.
-            </p>
-          </blockquote>
-          <figcaption className="blockquote-footer">
-            California, <cite title="Source Title">John Twarte</cite>
-          </figcaption>
-        </figure>
-      </div>
+      <Depoimento />
     </main>
   );
 }

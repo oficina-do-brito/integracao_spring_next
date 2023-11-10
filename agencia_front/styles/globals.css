@@ -24,3 +24,62 @@ body {
     height: 310px;
     margin-bottom: 10px;
 }
+nav {
+    min-height: 10%;
+    background-color: #FFF;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 2px -6px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 2px -6px 15px 5px rgba(0, 0, 0, 0);
+    z-index: 1;
+}
+li > a:hover{
+    color: #000000 !important;
+}
+main {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #EEEEEE;
+}
+.s1{
+    background: #EEEEEE;
+}
+.s2{
+    background: rgba(193, 198, 222,0.2);
+}
+.content{
+    width: 90%;
+}
+footer {
+    background: #00457C;
+    font: #FFF;
+}
+.h1-centralizado{
+    text-align: center;
+    padding: 100px 0;
+}
+.h2-destaque{
+    color: #00457C;
+}
+.bg-container-figure{
+    background-color: #DFF1FF;
+}
+.form-flutuante{
+    position: absolute;
+    width: auto;
+    height: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    top:10px;
+    right: 10px;
+    visibility: hidden;
+    & a{
+        margin-top: 30px;
+    }
+}
+.visivel{
+    visibility: visible;
+}
