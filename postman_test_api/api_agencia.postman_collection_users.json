@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "493eedef-8ba0-42fc-bf22-8720c7ab6945",
+		"name": "api_agencia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "11477470",
+		"_collection_link": "https://dark-shuttle-812156.postman.co/workspace/Django-apps~09cbe5de-434e-47d6-9b89-230875577385/collection/11477470-493eedef-8ba0-42fc-bf22-8720c7ab6945?action=share&source=collection_link&creator=11477470"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/usuarios"
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/usuarios/1"
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"nome\":\"clodoaldo\",\r\n\t\"email\":\"Clodoaldo.brtp4@gmail.com\",\r\n\t\"password\":\"cadu3000\",\r\n\t\"telefone\":\"981218541\",\r\n\t\"tipoUser\":1,\r\n    \"imagem\":\"dvwevwev\",\r\n    \"dataLogin\":\"2012-12-12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/usuarios"
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"id\": 1,\r\n    \"name\":\"havana\",\r\n    \"email\":\"havana.brtp4@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "/1http://localhost:8080/usuarios/1"
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "/2http://localhost:8080/usuarios/2"
+			},
+			"response": []
+		}
+	]
+}
