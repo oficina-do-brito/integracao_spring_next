@@ -5,14 +5,12 @@ import java.sql.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.Data;
 
-@Data
 @Entity
 @Table(name = "tb_cliente")
 public class Cliente extends Usuario {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Column(length = 11)
 	private String RG;
 
@@ -29,14 +27,40 @@ public class Cliente extends Usuario {
 	public Cliente() {
 		super();
 	}
+	
+	public String getRG() {
+		return RG;
+	}
 
-	public Cliente(Integer id, String nome, String email, String password, String telefone, int tipoUser, String imagem,
-			Date dataLogin, String RG, String CPF, int numeroViagens, String cartaoCredito) {
-		super(id, nome, email, password, telefone, tipoUser, imagem, dataLogin);
-		this.RG = RG;
-		this.CPF = CPF;
+	public void setRG(String rG) {
+		RG = rG;
+	}
+
+	public String getCPF() {
+		return CPF;
+	}
+
+	public void setCPF(String cPF) {
+		CPF = cPF;
+	}
+
+	public int getNumeroViagens() {
+		return numeroViagens;
+	}
+
+	public void setNumeroViagens(int numeroViagens) {
 		this.numeroViagens = numeroViagens;
+	}
+
+	public String getCartaoCredito() {
+		return cartaoCredito;
+	}
+
+	public void setCartaoCredito(String cartaoCredito) {
 		this.cartaoCredito = cartaoCredito;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }

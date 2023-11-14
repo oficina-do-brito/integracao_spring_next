@@ -15,7 +15,15 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 
 	public Usuario saveUsuario(Usuario u) {
-		return usuarioRepository.save(u);
+		Usuario usuarioSalvo = usuarioRepository.save(u);
+		if(usuarioSalvo.getId()==1) {}
+		else if(usuarioSalvo.getId()==2) {
+			
+		}
+		else {
+			
+		}
+		return usuarioSalvo ;
 	}
 
 	public Usuario findById(Integer id) {
