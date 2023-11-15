@@ -2,6 +2,7 @@ package com.oficinadobrito.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,33 +44,28 @@ public class Usuario implements Serializable {
 	private Date dataLogin;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="fk_endereco")
+	@JoinColumn(name = "fk_endereco")
 	private Endereco endereco;
-	
+
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(Integer id, String nome, String email, String password, String telefone, int tipoUser, String imagem,
-			Date dataLogin, Endereco endereco) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.email = email;
-		this.password = password;
-		this.telefone = telefone;
-		this.tipoUser = tipoUser;
-		this.imagem = imagem;
-		this.dataLogin = dataLogin;
-		this.endereco = endereco;
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return Objects.equals(id, other.id);
 	}
 
 	public Integer getId() {
@@ -136,9 +132,16 @@ public class Usuario implements Serializable {
 		this.dataLogin = dataLogin;
 	}
 
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
+
 }

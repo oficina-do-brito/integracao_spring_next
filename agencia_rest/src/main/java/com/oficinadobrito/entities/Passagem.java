@@ -27,22 +27,13 @@ public class Passagem {
 	@JoinColumn(name="fk_fornecedor")
 	private Fornecedor fornecedor;
 	
+	
 	@ManyToOne()
 	@JoinColumn(name="fk_pacote")
 	private PacoteViagem pacote;
 	
 	public Passagem() {
 		super();
-	}
-
-	public Passagem(Integer id, String titulo, double preco, int tipo, Fornecedor fornecedor, PacoteViagem pacote) {
-		super();
-		this.id = id;
-		this.titulo = titulo;
-		this.preco = preco;
-		this.tipo = tipo;
-		this.fornecedor = fornecedor;
-		this.pacote = pacote;
 	}
 
 	public Integer getId() {
@@ -92,5 +83,7 @@ public class Passagem {
 	public void setPacote(PacoteViagem pacote) {
 		this.pacote = pacote;
 	}
+
+	
 	
 }

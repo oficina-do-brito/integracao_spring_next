@@ -1,8 +1,9 @@
 package com.oficinadobrito.controllers;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,20 +22,20 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	
 	
-	@PostMapping
+	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Usuario> create(@RequestBody Usuario u) {
 		Usuario usr = usuarioService.saveUsuario(u);
 		
 		return ResponseEntity.status(201).body(usr);
 	}
 	
-	@GetMapping
-	public ResponseEntity<ArrayList<Usuario>> readAll() {
-		ArrayList<Usuario> usrs = usuarioService.findall();
+	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Usuario>> readAll() {
+		List<Usuario> usrs = usuarioService.findall();
 		return ResponseEntity.ok().body(usrs);
 	};
 	
-	@GetMapping("/{id}")
+	@GetMapping(value= "/{id}",produces="aplication/json")
 	public ResponseEntity<Usuario> readOne(@PathVariable Integer id) {
 		Usuario usr = usuarioService.findById(id);
 		

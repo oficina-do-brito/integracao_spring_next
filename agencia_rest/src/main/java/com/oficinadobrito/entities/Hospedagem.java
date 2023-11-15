@@ -1,6 +1,9 @@
 package com.oficinadobrito.entities;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,31 +29,21 @@ public class Hospedagem {
 	
 	private double preco;
 	
+	
 	@ManyToOne()
 	@JoinColumn(name="fk_origem")
 	private OrigemDestino origem;
-
+	
+	
 	@ManyToOne()
 	@JoinColumn(name="fk_fornecedor")
 	private Fornecedor fornecedor;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "hospedagem")
-	private ArrayList<PacoteViagem>  pacotes;
+	private List<PacoteViagem>  pacotes= new ArrayList<>();
 
 	public Hospedagem() {
-	}
-
-	public Hospedagem(Integer id, String nome, String imagem, int diaria, double preco, OrigemDestino origem,
-			Fornecedor fornecedor, ArrayList<PacoteViagem> pacotes) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.imagem = imagem;
-		this.diaria = diaria;
-		this.preco = preco;
-		this.origem = origem;
-		this.fornecedor = fornecedor;
-		this.pacotes = pacotes;
 	}
 
 	public Integer getId() {
@@ -109,12 +102,13 @@ public class Hospedagem {
 		this.fornecedor = fornecedor;
 	}
 
-	public ArrayList<PacoteViagem> getPacotes() {
+	public List<PacoteViagem> getPacotes() {
 		return pacotes;
 	}
 
-	public void setPacotes(ArrayList<PacoteViagem> pacotes) {
+	public void setPacotes(List<PacoteViagem> pacotes) {
 		this.pacotes = pacotes;
 	}
+	
 	
 }

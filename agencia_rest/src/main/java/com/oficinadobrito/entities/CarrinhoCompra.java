@@ -1,13 +1,19 @@
 package com.oficinadobrito.entities;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,26 +31,18 @@ public class CarrinhoCompra {
 
 	@Column(name = "quant_items")
 	private int quantItems;
-
+	
+	@JsonIgnore
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="fk_cliente")
 	private Cliente cliente;
-	// fk_cliente INTEGER,
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "carrinho")
-	private ArrayList<PacoteViagem> pacotes;
+	private List<PacoteViagem> pacotes= new ArrayList<>();
 
 	public CarrinhoCompra() {
 		super();
-	}
-
-	public CarrinhoCompra(Integer id, double valorTotal, int formaPagamento, int quantItems, Cliente cliente,
-			ArrayList<PacoteViagem> pacotes) {
-		super();
-		this.id = id;
-		this.valorTotal = valorTotal;
-		this.formaPagamento = formaPagamento;
-		this.quantItems = quantItems;
-		this.cliente = cliente;
-		this.pacotes = pacotes;
 	}
 
 	public Integer getId() {
@@ -87,11 +85,11 @@ public class CarrinhoCompra {
 		this.cliente = cliente;
 	}
 
-	public ArrayList<PacoteViagem> getPacotes() {
+	public List<PacoteViagem> getPacotes() {
 		return pacotes;
 	}
 
-	public void setPacotes(ArrayList<PacoteViagem> pacotes) {
+	public void setPacotes(List<PacoteViagem> pacotes) {
 		this.pacotes = pacotes;
 	}
 

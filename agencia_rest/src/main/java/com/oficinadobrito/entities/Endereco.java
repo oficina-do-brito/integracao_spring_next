@@ -1,6 +1,9 @@
 package com.oficinadobrito.entities;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,27 +31,16 @@ public class Endereco {
 	
 	private int numero;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="endereco")
-	private ArrayList<Usuario> usuarios;
+	private List<Usuario> usuarios= new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="endereco")
-	private ArrayList<OrigemDestino> origem;
+	private List<OrigemDestino> origem= new ArrayList<>();
 
 	public Endereco() {
 		super();
-	}
-
-	public Endereco(Integer id, String cEP, String estado, String cidade, String bairro, String rua, int numero,
-			ArrayList<Usuario> usuarios) {
-		super();
-		this.id = id;
-		CEP = cEP;
-		this.estado = estado;
-		this.cidade = cidade;
-		this.bairro = bairro;
-		this.rua = rua;
-		this.numero = numero;
-		this.usuarios = usuarios;
 	}
 
 	public Integer getId() {
@@ -107,12 +99,20 @@ public class Endereco {
 		this.numero = numero;
 	}
 
-	public ArrayList<Usuario> getUsuarios() {
+	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
 
-	public void setUsuarios(ArrayList<Usuario> usuarios) {
+	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
+	}
+
+	public List<OrigemDestino> getOrigem() {
+		return origem;
+	}
+
+	public void setOrigem(List<OrigemDestino> origem) {
+		this.origem = origem;
 	}
 
 }

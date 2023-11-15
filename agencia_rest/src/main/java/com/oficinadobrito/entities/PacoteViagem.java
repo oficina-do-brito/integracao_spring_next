@@ -2,6 +2,9 @@ package com.oficinadobrito.entities;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -45,42 +49,30 @@ public class PacoteViagem {
 	@Column(name="data_viagem")
 	private Date dataViagem;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="pacote")
-	private ArrayList<Passagem> passagem;
+	private List<Passagem> passagem;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="fk_origem")
 	private OrigemDestino origem;
 	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="fk_hospedagem")
 	private Hospedagem hospedagem;
 	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="fk_Carrinho")
 	private CarrinhoCompra  carrinho;
+	
+	
+	@ManyToMany(mappedBy="pacotes")
+	private List<Administrador> administrador= new ArrayList<>();
 
 	public PacoteViagem() {
 		super();
-	}
-
-	public PacoteViagem(Integer id, String titulo, int valorDesconto, double precoTotal, String possuiHospedagem,
-			String status, String meioTransporte, String imagem, Date prazoCancelamento, Date dataViagem,
-			OrigemDestino origem, Hospedagem hospedagem, CarrinhoCompra carrinho) {
-		super();
-		this.id = id;
-		this.titulo = titulo;
-		this.valorDesconto = valorDesconto;
-		this.precoTotal = precoTotal;
-		this.possuiHospedagem = possuiHospedagem;
-		this.status = status;
-		this.meioTransporte = meioTransporte;
-		this.imagem = imagem;
-		this.prazoCancelamento = prazoCancelamento;
-		this.dataViagem = dataViagem;
-		this.origem = origem;
-		this.hospedagem = hospedagem;
-		this.carrinho = carrinho;
 	}
 
 	public Integer getId() {
@@ -163,6 +155,14 @@ public class PacoteViagem {
 		this.dataViagem = dataViagem;
 	}
 
+	public List<Passagem> getPassagem() {
+		return passagem;
+	}
+
+	public void setPassagem(List<Passagem> passagem) {
+		this.passagem = passagem;
+	}
+
 	public OrigemDestino getOrigem() {
 		return origem;
 	}
@@ -186,5 +186,15 @@ public class PacoteViagem {
 	public void setCarrinho(CarrinhoCompra carrinho) {
 		this.carrinho = carrinho;
 	}
+
+	public List<Administrador> getAdministrador() {
+		return administrador;
+	}
+
+	public void setAdministrador(List<Administrador> administrador) {
+		this.administrador = administrador;
+	}
+
+	
 	
 }

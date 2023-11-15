@@ -1,6 +1,9 @@
 package com.oficinadobrito.entities;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,30 +25,21 @@ public class OrigemDestino {
 	private String descricao;
 	private int tipo;
 	
+	
 	@ManyToOne()
 	@JoinColumn(name="fk_endereco")
 	private Endereco endereco;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "origem")
-	private ArrayList<PacoteViagem> pacotes;
+	private List<PacoteViagem> pacotes= new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "origem")
-	private ArrayList<Hospedagem> hospedagem;
+	private List<Hospedagem> hospedagem= new ArrayList<>();
 
 	public OrigemDestino() {
 		super();
-	}
-
-	public OrigemDestino(Integer id, String nome, String imagem, String descricao, int tipo, Endereco endereco,
-			ArrayList<PacoteViagem> pacotes) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.imagem = imagem;
-		this.descricao = descricao;
-		this.tipo = tipo;
-		this.endereco = endereco;
-		this.pacotes = pacotes;
 	}
 
 	public Integer getId() {
@@ -96,12 +90,22 @@ public class OrigemDestino {
 		this.endereco = endereco;
 	}
 
-	public ArrayList<PacoteViagem> getPacotes() {
+	public List<PacoteViagem> getPacotes() {
 		return pacotes;
 	}
 
-	public void setPacotes(ArrayList<PacoteViagem> pacotes) {
+	public void setPacotes(List<PacoteViagem> pacotes) {
 		this.pacotes = pacotes;
 	}
+
+	public List<Hospedagem> getHospedagem() {
+		return hospedagem;
+	}
+
+	public void setHospedagem(List<Hospedagem> hospedagem) {
+		this.hospedagem = hospedagem;
+	}
+
+	
 
 }
