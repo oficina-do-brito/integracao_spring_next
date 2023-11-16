@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.oficinadobrito.entities.Administrador;
@@ -39,7 +40,7 @@ public class UsuarioService {
 			Administrador a = new Administrador();
 			a.setNome(u.getNome());
 			a.setEmail(u.getEmail());
-			a.setPassword(u.getPassword());
+			a.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));
 			a.setTelefone(u.getTelefone());
 			a.setTipoUser(u.getTipoUser());
 			a.setImagem(u.getImagem());
@@ -50,7 +51,7 @@ public class UsuarioService {
 			Fornecedor f = new Fornecedor();
 			f.setNome(u.getNome());
 			f.setEmail(u.getEmail());
-			f.setPassword(u.getPassword());
+			f.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));
 			f.setTelefone(u.getTelefone());
 			f.setTipoUser(u.getTipoUser());
 			f.setImagem(u.getImagem());
@@ -61,7 +62,7 @@ public class UsuarioService {
 		else {
 			Cliente c = new Cliente();
 			c.setEmail(u.getEmail());
-			c.setPassword(u.getPassword());
+			c.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));
 			c.setTelefone(u.getTelefone());
 			c.setTipoUser(u.getTipoUser());
 			c.setImagem(u.getImagem());

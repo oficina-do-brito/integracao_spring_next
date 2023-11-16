@@ -3,9 +3,11 @@ package com.oficinadobrito.entities;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
@@ -34,7 +36,8 @@ public class Usuario implements UserDetails, Serializable {
 	private String nome;
 
 	private String email;
-
+	
+	@Column(length=255)
 	private String password;
 
 	private String telefone;
@@ -150,13 +153,23 @@ public class Usuario implements UserDetails, Serializable {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		//admin
+		if(this.tipoUser == 1) {
+			return List.of(new SimpleGrantedAuthority("ADMIN"), new SimpleGrantedAuthority("USER"));
+		}
+		//fornecedor
+		else if(this.tipoUser == 2) {
+			return List.of(new SimpleGrantedAuthority("FORNECEDOR"), new SimpleGrantedAuthority("USER"));
+		}
+		//cliente
+		else {
+			return List.of( new SimpleGrantedAuthority("USER"));
+		}
 	}
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
 		return this.email;
 	}
 
