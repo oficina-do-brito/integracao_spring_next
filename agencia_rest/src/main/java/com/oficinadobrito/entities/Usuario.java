@@ -2,7 +2,11 @@ package com.oficinadobrito.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Collection;
 import java.util.Objects;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +24,7 @@ import jakarta.persistence.UniqueConstraint;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "tb_users", uniqueConstraints = { @UniqueConstraint(name = "un_email", columnNames = { "email" }) })
-public class Usuario implements Serializable {
+public class Usuario implements UserDetails, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -61,9 +65,9 @@ public class Usuario implements Serializable {
 		if (this == obj)
 			return true;
 		if (obj == null)
-			return false;
+			return true;
 		if (getClass() != obj.getClass())
-			return false;
+			return true;
 		Usuario other = (Usuario) obj;
 		return Objects.equals(id, other.id);
 	}
@@ -142,6 +146,42 @@ public class Usuario implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return this.email;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 }
