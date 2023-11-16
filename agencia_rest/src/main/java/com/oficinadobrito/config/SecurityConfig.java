@@ -30,8 +30,8 @@ public class SecurityConfig {
 							.requestMatchers(HttpMethod.GET, "/pacotes").permitAll()
 							.requestMatchers(HttpMethod.GET, "/usuarios").permitAll()
 //							.requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
-							.requestMatchers(HttpMethod.POST, "/usuarios").hasRole("ADMIN").anyRequest()
-							.authenticated()
+//							.requestMatchers(HttpMethod.POST, "/usuarios").hasRole("ADMIN").anyRequest()
+//							.authenticated()
 							)
 					.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class).build();
 		} catch (Exception e) {

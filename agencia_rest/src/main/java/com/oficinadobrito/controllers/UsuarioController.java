@@ -35,7 +35,7 @@ public class UsuarioController {
 		return ResponseEntity.ok().body(usrs);
 	};
 	
-	@GetMapping(value= "/{id}",produces="aplication/json")
+	@GetMapping(value= "/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Usuario> readOne(@PathVariable Integer id) {
 		Usuario usr = usuarioService.findById(id);
 		

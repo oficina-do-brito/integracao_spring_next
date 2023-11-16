@@ -67,7 +67,7 @@ public class PacoteViagem {
 	@JoinColumn(name="fk_Carrinho")
 	private CarrinhoCompra  carrinho;
 	
-	
+	@JsonIgnore
 	@ManyToMany(mappedBy="pacotes")
 	private List<Administrador> administrador= new ArrayList<>();
 

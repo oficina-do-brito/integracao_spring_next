@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.oficinadobrito.enums.UsuarioRole;
 
 import jakarta.persistence.Column;
@@ -54,6 +55,7 @@ public class Usuario implements UserDetails, Serializable {
 	@Column(name = "data_login")
 	private Date dataLogin;
 	
+	@JsonIgnore
 	@Enumerated(EnumType.STRING)
 	private UsuarioRole role;
 
@@ -64,7 +66,7 @@ public class Usuario implements UserDetails, Serializable {
 	public Usuario() {
 		super();
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
