@@ -10,8 +10,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.oficinadobrito.enums.UsuarioRole;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -49,6 +53,9 @@ public class Usuario implements UserDetails, Serializable {
 
 	@Column(name = "data_login")
 	private Date dataLogin;
+	
+	@Enumerated(EnumType.STRING)
+	private UsuarioRole role;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_endereco")
@@ -150,22 +157,29 @@ public class Usuario implements UserDetails, Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+
+	public UsuarioRole getRole() {
+		return role;
+	}
+
+	public void setRole(UsuarioRole role) {
+		this.role = role;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
 		//admin
-		if(this.tipoUser == 1) {
-			return List.of(new SimpleGrantedAuthority("ADMIN"), new SimpleGrantedAuthority("USER"));
+		if(this.role == UsuarioRole.ADMINISTRADOR) {
+			return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"),new SimpleGrantedAuthority("ROLE_USER"));
 		}
 		//fornecedor
-		else if(this.tipoUser == 2) {
-			return List.of(new SimpleGrantedAuthority("FORNECEDOR"), new SimpleGrantedAuthority("USER"));
+		else if(this.role == UsuarioRole.FORNECEDOR) {
+			return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"),new SimpleGrantedAuthority("ROLE_USER"));
 		}
 		//cliente
-		else {
-			return List.of( new SimpleGrantedAuthority("USER"));
-		}
+		return List.of(new SimpleGrantedAuthority("ROLE_USER"));
 	}
 
 	@Override
@@ -175,25 +189,21 @@ public class Usuario implements UserDetails, Serializable {
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

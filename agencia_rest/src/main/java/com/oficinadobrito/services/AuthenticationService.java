@@ -22,7 +22,7 @@ import com.oficinadobrito.repositories.UsuarioRepository;
 @Service
 public class AuthenticationService implements UserDetailsService {
 	@Value("${api.security.token.secret}")
-	private byte[] secret;
+	private String secret;
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -37,7 +37,6 @@ public class AuthenticationService implements UserDetailsService {
 			Algorithm algorithm = Algorithm.HMAC256(this.secret);
 			String token = JWT.create().withIssuer("auth-api").withSubject(usuario.getEmail())
 					.withExpiresAt(generateExpiration()).sign(algorithm);
-
 			return token;
 		} catch (JWTCreationException e) {
 			throw new RuntimeException("Erro while generate token Jwt", e);

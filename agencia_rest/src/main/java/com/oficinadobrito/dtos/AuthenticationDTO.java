@@ -1,5 +1,5 @@
 package com.oficinadobrito.dtos;
 
-public record AuthenticationDTO(String email,String senha) {
+public record AuthenticationDTO(String email,String password) {
 
 }
