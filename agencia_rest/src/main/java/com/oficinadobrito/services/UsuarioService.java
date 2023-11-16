@@ -80,6 +80,7 @@ public class UsuarioService {
 		Optional<Usuario> usr = usuarioRepository.findById(id);
 		return usr.get();
 	}
+	
 	public List<Usuario> findall(){
 		return usuarioRepository.findAll();
 	}
