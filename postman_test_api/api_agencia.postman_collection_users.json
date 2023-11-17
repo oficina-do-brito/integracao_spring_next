@@ -8,76 +8,128 @@
 	},
 	"item": [
 		{
-			"name": "getAll",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "http://localhost:8080/usuarios"
-			},
-			"response": []
-		},
-		{
-			"name": "getById",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "http://localhost:8080/usuarios/1"
-			},
-			"response": []
-		},
-		{
-			"name": "create",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n   \"nome\":\"clodoaldo\",\r\n\t\"email\":\"Clodoaldo.brtp4@gmail.com\",\r\n\t\"password\":\"cadu3000\",\r\n\t\"telefone\":\"981218541\",\r\n\t\"tipoUser\":1,\r\n    \"imagem\":\"dvwevwev\",\r\n    \"dataLogin\":\"2012-12-12\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/usuarios"
+					},
+					"response": []
 				},
-				"url": "http://localhost:8080/usuarios"
-			},
-			"response": []
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/usuarios/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"clodoaldo\",\r\n\t\"email\":\"wef.brtp4@gmail.com\",\r\n\t\"password\":\"cadu3000\",\r\n\t\"telefone\":\"981218541\",\r\n    \"imagem\":\"dvwevwev\",\r\n    \"role\": \"FORNECEDOR\",\r\n    \"dataLogin\":\"2023-12-13\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\":\"clodoaldo@gmail.com\",\r\n\t\"password\":\"cadu3000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"id\": 1,\r\n    \"name\":\"havana\",\r\n    \"email\":\"havana.brtp4@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "/1http://localhost:8080/usuarios/1"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "/2http://localhost:8080/usuarios/2"
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "update",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{   \r\n    \"id\": 1,\r\n    \"name\":\"havana\",\r\n    \"email\":\"havana.brtp4@gmail.com\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "/1http://localhost:8080/usuarios/1"
-			},
-			"response": []
+			"name": "Administrador",
+			"item": []
 		},
 		{
-			"name": "delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "/2http://localhost:8080/usuarios/2"
-			},
-			"response": []
+			"name": "CarrinhoCompra",
+			"item": []
+		},
+		{
+			"name": "Cliente",
+			"item": []
+		},
+		{
+			"name": "Passagem",
+			"item": []
+		},
+		{
+			"name": "PacoteViagem",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

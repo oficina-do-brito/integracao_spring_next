@@ -1,6 +1,5 @@
 package com.oficinadobrito.entities;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
@@ -10,7 +9,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.oficinadobrito.enums.UsuarioRole;
 
 import jakarta.persistence.Column;
@@ -31,7 +29,7 @@ import jakarta.persistence.UniqueConstraint;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "tb_users", uniqueConstraints = { @UniqueConstraint(name = "un_email", columnNames = { "email" }) })
-public class Usuario implements UserDetails, Serializable {
+public class Usuario implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -47,15 +45,11 @@ public class Usuario implements UserDetails, Serializable {
 
 	private String telefone;
 
-	@Column(name = "tipo_user")
-	private int tipoUser;
-
 	private String imagem;
 
 	@Column(name = "data_login")
 	private Date dataLogin;
 	
-	@JsonIgnore
 	@Enumerated(EnumType.STRING)
 	private UsuarioRole role;
 
@@ -124,14 +118,6 @@ public class Usuario implements UserDetails, Serializable {
 		this.telefone = telefone;
 	}
 
-	public int getTipoUser() {
-		return tipoUser;
-	}
-
-	public void setTipoUser(int tipoUser) {
-		this.tipoUser = tipoUser;
-	}
-
 	public String getImagem() {
 		return imagem;
 	}
@@ -178,10 +164,12 @@ public class Usuario implements UserDetails, Serializable {
 		}
 		//fornecedor
 		else if(this.role == UsuarioRole.FORNECEDOR) {
-			return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"),new SimpleGrantedAuthority("ROLE_USER"));
+			return List.of(new SimpleGrantedAuthority("ROLE_USER"));
 		}
 		//cliente
-		return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+		else {
+			return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+		}
 	}
 
 	@Override

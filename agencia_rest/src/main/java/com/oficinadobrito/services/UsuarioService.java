@@ -12,6 +12,7 @@ import com.oficinadobrito.entities.CarrinhoCompra;
 import com.oficinadobrito.entities.Cliente;
 import com.oficinadobrito.entities.Fornecedor;
 import com.oficinadobrito.entities.Usuario;
+import com.oficinadobrito.enums.UsuarioRole;
 import com.oficinadobrito.repositories.AdministradorRepository;
 import com.oficinadobrito.repositories.CarrinhoCompraRepository;
 import com.oficinadobrito.repositories.ClienteRepository;
@@ -36,27 +37,27 @@ public class UsuarioService {
 	private CarrinhoCompraRepository  carrinhoRepository;
 
 	public Usuario saveUsuario(Usuario u) {
-		if(u.getTipoUser()==1) {
+		if(u.getRole() == UsuarioRole.ADMINISTRADOR) {
 			Administrador a = new Administrador();
 			a.setNome(u.getNome());
 			a.setEmail(u.getEmail());
 			a.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));
 			a.setTelefone(u.getTelefone());
-			a.setTipoUser(u.getTipoUser());
 			a.setImagem(u.getImagem());
 			a.setnViagensRevisadas(0);
+			a.setRole(u.getRole());
 			administradorRepository.save(a);
 		}
-		else if(u.getTipoUser()==2) {
+		else if(u.getRole() == UsuarioRole.FORNECEDOR) {
 			Fornecedor f = new Fornecedor();
 			f.setNome(u.getNome());
 			f.setEmail(u.getEmail());
 			f.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));
 			f.setTelefone(u.getTelefone());
-			f.setTipoUser(u.getTipoUser());
 			f.setImagem(u.getImagem());
 			f.setCNPJ("");
 			f.setTipoServico(0);
+			f.setRole(u.getRole());
 			fornecedorRepository.save(f);
 		}
 		else {
@@ -64,11 +65,11 @@ public class UsuarioService {
 			c.setEmail(u.getEmail());
 			c.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));
 			c.setTelefone(u.getTelefone());
-			c.setTipoUser(u.getTipoUser());
 			c.setImagem(u.getImagem());
 			c.setRG("");
 			c.setNumeroViagens(0);
 			c.setCartaoCredito("");
+			c.setRole(u.getRole());
 
 			clienteRepository.save(c);
 			initCarrinho(c);

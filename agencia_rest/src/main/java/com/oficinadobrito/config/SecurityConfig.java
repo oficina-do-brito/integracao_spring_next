@@ -29,7 +29,7 @@ public class SecurityConfig {
 							.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
 							.requestMatchers(HttpMethod.GET, "/pacotes").permitAll()
 							.requestMatchers(HttpMethod.GET, "/usuarios").permitAll()
-//							.requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
+							.requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
 //							.requestMatchers(HttpMethod.POST, "/usuarios").hasRole("ADMIN").anyRequest()
 //							.authenticated()
 							)

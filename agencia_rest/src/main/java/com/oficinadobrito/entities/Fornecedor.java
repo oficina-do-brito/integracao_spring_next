@@ -1,6 +1,5 @@
 package com.oficinadobrito.entities;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_fornecedor")
-public class Fornecedor extends Usuario implements Serializable{
+public class Fornecedor extends Usuario{
 	private static final long serialVersionUID = 1L;
 
 	private String CNPJ;

@@ -1,7 +1,7 @@
 package com.oficinadobrito.enums;
 
 public enum UsuarioRole {
-	ADMINISTRADOR("admin"), FORNECEDOR("fornecedor"), CLIENTE("cliente"), USER("user");
+	ADMINISTRADOR("admin"), FORNECEDOR("fornecedor"), CLIENTE("cliente");
 
 	private String role;
 

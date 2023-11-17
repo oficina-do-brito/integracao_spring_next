@@ -1,6 +1,5 @@
 package com.oficinadobrito.entities;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_administrador")
-public class Administrador extends Usuario implements Serializable {
+public class Administrador extends Usuario {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "n_viagens_revisadas")
