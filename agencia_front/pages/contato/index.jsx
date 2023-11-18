@@ -1,14 +1,19 @@
+import Styles from "@/styles/Contatos.module.css";
+
 export default function Contatos() {
   return (
     <>
-      <div className=" container-fluid d-flex flex-column justify-content-center c-body-contact">
-        {/* TODO: banner info */}
-        <div className="container-fluid p-0 banner w-100 d-flex flex-column align-items-start justify-content-center">
+      <div
+        className={`container-fluid d-flex flex-column justify-content-center ${Styles.cBodyContact}`}
+      >
+        <div
+          className={`container-fluid p-0 ${Styles.banner} w-100 d-flex flex-column align-items-start justify-content-center`}
+        >
           <h2 className="text-center fs-1 fw-semibold text-light p-5">
             Entre em contato conosco
           </h2>
         </div>
-        <div className="explicativos justify-self-start p-5">
+        <div className={`${Styles.explicativos} justify-self-start p-5`}>
           <h3 className="fs-3 text-primary text-opacity-75">
             Motivos para voçê entrar em contato
           </h3>
@@ -20,13 +25,14 @@ export default function Contatos() {
           <p className="fw-light">Reclamações</p>
         </div>
         {/* TODO: container form  */}
-        <div className="container h-auto border rounded position-absolute mb-5 form-contato mb-3">
-          {/* form  */}
+        <div
+          className={`container h-auto border rounded position-absolute mb-5 ${Styles.formContato} mb-3`}
+        >
           <form className="row g-3 p-5" action="" method="POST">
             <div className="col-md-12">
               <label htmlFor="inputEmail4" className="form-label">
                 Email
-              </label>{" "}
+              </label>
               <input
                 type="email"
                 className="form-control"
@@ -53,7 +59,7 @@ export default function Contatos() {
             <div className="col-12">
               <label htmlFor="inputAddress" className="form-label">
                 Endereço
-              </label>{" "}
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -64,7 +70,7 @@ export default function Contatos() {
             <div className="col-12">
               <label htmlFor="inputAddress2" className="form-label">
                 Complemento
-              </label>{" "}
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -75,13 +81,13 @@ export default function Contatos() {
             <div className="col-md-6">
               <label htmlFor="inputCity" className="form-label">
                 Cidade
-              </label>{" "}
+              </label>
               <input type="text" className="form-control" id="inputCity" />
             </div>
             <div className="col-md-4">
               <label htmlFor="inputState" className="form-label">
                 Estado
-              </label>{" "}
+              </label>
               <select id="inputState" className="form-select">
                 <option selected="">Choose...</option>
                 <option>...</option>
@@ -90,7 +96,7 @@ export default function Contatos() {
             <div className="col-md-2">
               <label htmlFor="inputZip" className="form-label">
                 Numero
-              </label>{" "}
+              </label>
               <input type="text" className="form-control" id="inputZip" />
             </div>
             <div className="col-12">
@@ -101,8 +107,7 @@ export default function Contatos() {
                   id="gridCheck"
                 />
                 <label className="form-check-label" htmlFor="gridCheck">
-                  {" "}
-                  Check me out{" "}
+                  Check me out
                 </label>
               </div>
             </div>

@@ -2,20 +2,17 @@ import Link from "next/link";
 
 export default function Navbar() {
   
-
-  
-  
-  const clickFormVisible = () => {
+  const handleClickFormVisible = () => {
     var div = document.querySelector(".form-flutuante");
     div.classList.add("visible");
   };
-  const clickFormNotVisible = () => {
+  const handleClickFormNotVisible = () => {
     var div = document.querySelector(".form-flutuante");
     div.classList.remove("visible");
   };
 
   return (
-    <div className="nav navbar w-100 sticky-md-top navbar-expand-lg">
+    <nav className="nav navbar w-100 sticky-md-top navbar-expand-lg">
       <div className="container-fluid">
         <Link className="navbar-brand" href={"/"}>
           <img
@@ -66,15 +63,11 @@ export default function Navbar() {
           <button
             type="button"
             className="btn btn-outline-primary rounded-pill mx-md-5"
-            onClick={clickFormVisible}
+            onClick={handleClickFormVisible}
           >
             Login
           </button>
-          <form
-            className="container bg-light form-flutuante"
-            action="LoginServlet"
-            method="POST"
-          >
+          <form className="container bg-light form-flutuante" action="LoginServlet" method="POST">
             <div className="form-floating mb-3">
               <input
                 type="email"
@@ -111,7 +104,7 @@ export default function Navbar() {
                 <button
                   type="button"
                   className="btn btn-outline-danger rounded-pill mx-md-5"
-                  onClick={clickFormNotVisible}
+                  onClick={handleClickFormNotVisible}
                 >
                   Fechar
                 </button>
@@ -120,6 +113,6 @@ export default function Navbar() {
           </form>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }

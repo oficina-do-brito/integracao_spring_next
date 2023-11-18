@@ -6,11 +6,7 @@ export default function Card(props) {
       <div className="price-section">
         <div className="price-area simples">
           <div className="inner-area simples">
-            <img
-              className="img-fluid rounded object-fit-fill"
-              src="http://localhost:3000/assets/img/noronha.png"
-              alt="imagem de noronha"
-            />
+            <img className="img-fluid rounded object-fit-fill" src={`http://localhost:3000/img/${props.imagem}`} alt={`imagem representativa de ${props.imagem}`} />
           </div>
         </div>
       </div>
@@ -20,40 +16,36 @@ export default function Card(props) {
       <div className="features">
         <ul>
           <li>
-            <span className="list-name">passagem aérea</span>{" "}
+            <span className="list-name">passagem {props.tipoTransporte}</span>
             <span className="icon check">
               <i className="bi bi-check text-success" />
             </span>
           </li>
           <li>
-            <span className="list-name">bagagem 30k</span>{" "}
+            <span className="list-name">bagagem 30k</span>
             <span className="icon check">
-              {" "}
+              
               <i className="bi bi-check text-success" />
             </span>
           </li>
           <li>
-            <span className="list-name">hospedagem</span>{" "}
+            <span className="list-name">{props.hospedagem? "hospedagem" : "não inclui hospegadem"}</span>
             <span className="icon check">
               <i className="bi bi-x text-danger" />
             </span>
           </li>
           <li>
             <span className="list-name">
-              <span className="text-danger">R$ </span>${"{"}
-              pacote.precoTotal{"}"}
-              -${"{"}pacote.valorDesconto{"}"}%
-            </span>{" "}
+              <span className="text-danger">R$ </span>{props.precoTotal} - {props.desconto}% </span>
             <span className="icon check">
               <i className="bi bi-patch-exclamation-fill text-primary" />
             </span>
           </li>
           <li>
             <span className="list-name">
-              <span className="text-success">R$</span>${"{"}
-              pacote.precoTotal - (pacote.precoTotal*(pacote.valorDesconto/100))
-              {"}"}
-            </span>{" "}
+              <span className="text-success">R$</span>
+              {props.precoTotal - (props.precoTotal*(props.desconto/100))}
+            </span>
             <span className="icon check">
               <i className="bi bi-cash-coin text-success" />
             </span>

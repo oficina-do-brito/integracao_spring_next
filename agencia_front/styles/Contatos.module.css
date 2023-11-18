@@ -4,12 +4,12 @@
     flex-shrink: 0;
     background: linear-gradient(183deg, #2193FA 0%, rgba(33, 147, 250, 0.81) 32.85%, rgba(33, 147, 250, 0.64) 54.85%, rgba(33, 147, 250, 0.20) 55.22%);
 }
-.c-body-contact{
+.cBodyContact{
     background: #F1F1E6;
     height: 100vh;
     
 }
-.form-contato {
+.formContato {
     width: 35%;
     top: 26%;
     right: 15%;
@@ -20,14 +20,15 @@
     width: 40%;
     max-height: 770px;
 }
+
 @media only screen and (max-width: 425px) {
-    .c-body-contact{
+    .cBodyContact{
         height: 1100px;
     }
     .explicativos{
         display: none;
     }
-    .form-contato {
+    .formContato {
         position: relative;
         border: none !important;
         border-radius: none !important;
@@ -39,13 +40,13 @@
     }
 }
 @media only screen and (max-width: 768px) {
-    .c-body-contact{
+    .cBodyContact{
         height: 1100px;
     }
     .explicativos{
         display: none;
     }
-    .form-contato {
+    .formContato {
         position: relative;
         border: none !important;
         border-radius: none !important;
