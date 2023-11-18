@@ -1,12 +1,23 @@
 import Link from "next/link";
 
 export default function Navbar() {
-  const clickFormVisible = () => {};
-  const clickFormNotVisible = () => {};
+  
+
+  
+  
+  const clickFormVisible = () => {
+    var div = document.querySelector(".form-flutuante");
+    div.classList.add("visible");
+  };
+  const clickFormNotVisible = () => {
+    var div = document.querySelector(".form-flutuante");
+    div.classList.remove("visible");
+  };
+
   return (
     <div className="nav navbar w-100 sticky-md-top navbar-expand-lg">
       <div className="container-fluid">
-        <Link className="navbar-brand" href={"/home"}>
+        <Link className="navbar-brand" href={"/"}>
           <img
             src="http://localhost:3000/img/logo.png"
             alt="logo da agencia"
@@ -28,7 +39,13 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" href={"/home"}>Home</Link>
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                href={"/"}
+              >
+                Home
+              </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" href={"/destino"}>
@@ -36,12 +53,12 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href={"/homepromocoes"}>
+              <Link className="nav-link" href={"/"}>
                 Promoções
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href={"/contatos"}>
+              <Link className="nav-link" href={"/contato"}>
                 Contatos
               </Link>
             </li>
@@ -49,7 +66,7 @@ export default function Navbar() {
           <button
             type="button"
             className="btn btn-outline-primary rounded-pill mx-md-5"
-            onclick="clickFormVisible"
+            onClick={clickFormVisible}
           >
             Login
           </button>
@@ -78,7 +95,7 @@ export default function Navbar() {
               />
               <label htmlFor="floatingPassword">Password</label>
             </div>
-            <Link className=".text-primary" href={"/home"}>
+            <Link className=".text-primary" href={"/"}>
               Cadastre-se
             </Link>
             <div className="container d-flex">
@@ -94,7 +111,7 @@ export default function Navbar() {
                 <button
                   type="button"
                   className="btn btn-outline-danger rounded-pill mx-md-5"
-                  onclick="clickFormNotVisible"
+                  onClick={clickFormNotVisible}
                 >
                   Fechar
                 </button>

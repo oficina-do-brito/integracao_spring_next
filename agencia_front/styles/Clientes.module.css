@@ -109,7 +109,7 @@
     background: #FFF;
 }
 
-.card-cliente {
+.cardCliente {
     width: 392px;
     height: 141px;
     flex-shrink: 0;
@@ -118,20 +118,20 @@
 }
 
 @media only screen and (max-width: 425px) {
-    .card-cliente {
+    .cardCliente {
         width: 160px;
         height: 141px;
     }
 
-    .card-cliente p {
+    .cardCliente p {
         font-size: 0.7rem;
     }
 
-    .card-cliente h4 {
+    .cardCliente h4 {
         font-size: 1rem;
     }
 
-    .sidebar_nav {
+    .sidebarNav {
         z-index: 1;
     }
 
