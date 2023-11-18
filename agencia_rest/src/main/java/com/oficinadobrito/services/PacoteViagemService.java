@@ -19,5 +19,18 @@ public class PacoteViagemService {
 	public PacoteViagem savePacoteViagem(PacoteViagem p) {
 		return pacoteRepository.save(p);
 	}
+	public PacoteViagem updatePacoteViagem(Integer id,PacoteViagem p) {
+		PacoteViagem pAntiga = pacoteRepository.getReferenceById(id);
+		reparsarValoresAtualizados(pAntiga,p);
+		return pacoteRepository.save(p);
+	}
+	public void deletePacoteViagem(Integer id) {
+		this.pacoteRepository.deleteById(id);
+	}
+	
+	
+	private void reparsarValoresAtualizados(PacoteViagem pAntiga,PacoteViagem p) {
+//		id_pacote ,titulo ,valor_desconto ,preco_total ,possui_hospedagem ,status ,meio_transporte,imagem ,prazo_cancelamento ,data_viagem fk_origem ,fk_hospedagem ,fk_carrinho 
+	}
 
 }

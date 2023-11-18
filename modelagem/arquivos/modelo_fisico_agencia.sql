@@ -8,7 +8,7 @@ nome VARCHAR(150),
 email VARCHAR(150),
 password VARCHAR(50),
 telefone VARCHAR(50),
-tipo_user INTEGER,
+role VARCHAR(150),
 imagem TEXT,
 data_login DATETIME,
 fk_endereco INTEGER

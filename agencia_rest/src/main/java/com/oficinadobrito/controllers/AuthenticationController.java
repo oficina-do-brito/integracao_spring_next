@@ -27,7 +27,7 @@ public class AuthenticationController {
 	public ResponseEntity<String> login(@RequestBody @Validated AuthenticationDTO data) {
 		var emailPassword = new UsernamePasswordAuthenticationToken(data.email(),data.password());
 		
-		//cria um token baseado no email esenha
+		//cria um token baseado no email+senha
 		var auth = this.authenticationManager.authenticate(emailPassword);
 		
 		var token = authenticationService.generateToken((Usuario) auth.getPrincipal());
