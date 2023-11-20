@@ -1,4 +1,5 @@
 import React from "react";
+//titulo, imagem, tipoTransporte, hospedagem,precoTotal, desconto
 
 export default function Card(props) {
   return (

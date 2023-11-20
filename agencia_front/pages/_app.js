@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import "@/styles/card.css";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";

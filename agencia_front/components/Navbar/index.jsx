@@ -1,7 +1,31 @@
 import Link from "next/link";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Navbar() {
-  
+  const [state, setState] = useState({});
+
+
+
+
+
+
+  const handleChangeEmail = (evento) => {
+    setState({ email: evento.target.value, password: "" });
+  };
+  const handleChangePassoword = (evento) => {
+    setState({ email: state.email, password: evento.target.value });
+  };
+  const handleSubmitLogin = async (e) => {
+    console.log(state);
+    const url = "http://localhost:8080/auth/login";
+    e.preventDefault();
+    await axios
+      .post(url, { email: state.email, password: state.password })
+      .then((response) => console.log(response.data))
+      .catch((error) => console.log(error));
+  };
+
   const handleClickFormVisible = () => {
     var div = document.querySelector(".form-flutuante");
     div.classList.add("visible");
@@ -10,6 +34,9 @@ export default function Navbar() {
     var div = document.querySelector(".form-flutuante");
     div.classList.remove("visible");
   };
+
+
+
 
   return (
     <nav className="nav navbar w-100 sticky-md-top navbar-expand-lg">
@@ -36,11 +63,7 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                href={"/"}
-              >
+              <Link className="nav-link active" aria-current="page" href={"/"}>
                 Home
               </Link>
             </li>
@@ -67,7 +90,8 @@ export default function Navbar() {
           >
             Login
           </button>
-          <form className="container bg-light form-flutuante" action="LoginServlet" method="POST">
+
+          <form className="container bg-light form-flutuante">
             <div className="form-floating mb-3">
               <input
                 type="email"
@@ -75,6 +99,7 @@ export default function Navbar() {
                 id="floatingInput"
                 placeholder="name@example.com"
                 name="email"
+                onChange={handleChangeEmail}
               />
               <label htmlFor="floatingInput">Email address</label>
             </div>
@@ -85,6 +110,7 @@ export default function Navbar() {
                 id="floatingPassword"
                 placeholder="Password"
                 name="password"
+                onChange={handleChangePassoword}
               />
               <label htmlFor="floatingPassword">Password</label>
             </div>
@@ -94,8 +120,9 @@ export default function Navbar() {
             <div className="container d-flex">
               <Link className="nav-link" href={"/manage"}>
                 <button
-                  type="submit"
+                  btype="submit"
                   className="btn btn-outline-primary rounded-pill mx-md-5"
+                  onClick={handleSubmitLogin}
                 >
                   Entrar
                 </button>
