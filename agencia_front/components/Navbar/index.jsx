@@ -1,14 +1,10 @@
 import Link from "next/link";
 import { useState } from "react";
-import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
   const [state, setState] = useState({});
-
-
-
-
-
+  const route = useRouter();
 
   const handleChangeEmail = (evento) => {
     setState({ email: evento.target.value, password: "" });
@@ -16,14 +12,34 @@ export default function Navbar() {
   const handleChangePassoword = (evento) => {
     setState({ email: state.email, password: evento.target.value });
   };
+
   const handleSubmitLogin = async (e) => {
-    console.log(state);
-    const url = "http://localhost:8080/auth/login";
     e.preventDefault();
-    await axios
-      .post(url, { email: state.email, password: state.password })
-      .then((response) => console.log(response.data))
-      .catch((error) => console.log(error));
+    try {
+      const formData = {
+        "email": `${state.email}`,
+        "password": `${state.password}`
+      };
+      const response = await fetch('http://localhost:8080/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+        credentials: 'include',
+      });
+      if (response.ok) {
+        const data = await response.text();
+        console.log('Login successful Data: ', data);
+        // alert(data);
+        handleClickFormNotVisible();
+        route.push({pathname:"/manage"});
+      } else {
+        console.error('Login failed');
+      }
+    } catch (error) {
+      console.error('Login failed', error);
+    }
   };
 
   const handleClickFormVisible = () => {
