@@ -1,5 +1,6 @@
 package com.oficinadobrito.entities;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,10 +10,19 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
+@EqualsAndHashCode(callSuper = true)
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tb_fornecedor")
 public class Fornecedor extends Usuario{
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private String CNPJ;
@@ -27,51 +37,6 @@ public class Fornecedor extends Usuario{
 	@JsonIgnore
 	@OneToMany(mappedBy = "fornecedor")
 	private List<Hospedagem> hospedagem= new ArrayList<>();
-
-
-	public Fornecedor() {
-		super();
-	}
-
-
-	public String getCNPJ() {
-		return CNPJ;
-	}
-
-
-	public void setCNPJ(String cNPJ) {
-		CNPJ = cNPJ;
-	}
-
-
-	public int getTipoServico() {
-		return tipoServico;
-	}
-
-
-	public void setTipoServico(int tipoServico) {
-		this.tipoServico = tipoServico;
-	}
-
-
-	public List<Passagem> getPassagem() {
-		return passagem;
-	}
-
-
-	public void setPassagem(List<Passagem> passagem) {
-		this.passagem = passagem;
-	}
-
-
-	public List<Hospedagem> getHospedagem() {
-		return hospedagem;
-	}
-
-
-	public void setHospedagem(List<Hospedagem> hospedagem) {
-		this.hospedagem = hospedagem;
-	}
 
 
 	public static long getSerialversionuid() {

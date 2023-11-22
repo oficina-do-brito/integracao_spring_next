@@ -57,7 +57,7 @@ Backend:
 
 IDE: 
 
-<img src="https://user-images.githubusercontent.com/25181517/192108892-6e9b5cdf-4e35-4a70-ad9a-801a93a07c1c.png" width="50" height="50">
+<img src="https://user-images.githubusercontent.com/25181517/192108890-200809d1-439c-4e23-90d3-b090cf9a4eea.png" width="50" height="50">
 
 Combinação: 
 
@@ -70,6 +70,7 @@ Combinação:
 ### Prerequisitos
 
 - Se quizer rodar o projeto com banco ja de databse criada, é a conselhavel ter o docker e docker-compose na sua maquina
+- Uma ide com Plugin do Lombok
 
 ### Rodando o projeto backend
 

@@ -9,7 +9,7 @@ export default function FragmentPacotes() {
           className="form-select align-self-center w-50 mb-5"
           aria-label="Default select example"
         >
-          <option selected="">Selecione opção de visualização</option>
+          <option selected="1">Selecione opção de visualização</option>
           <option value={1}>Top viagens</option>
           <option value={2}>Top Internacional</option>
           <option value={3}>Top nacional</option>

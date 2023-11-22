@@ -44,7 +44,7 @@ public class UsuarioService {
 			a.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));
 			a.setTelefone(u.getTelefone());
 			a.setImagem(u.getImagem());
-			a.setnViagensRevisadas(0);
+			a.setNViagensRevisadas(0);
 			a.setRole(u.getRole());
 			administradorRepository.save(a);
 		}

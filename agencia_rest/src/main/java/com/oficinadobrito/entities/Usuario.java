@@ -1,10 +1,12 @@
 package com.oficinadobrito.entities;
 
+import java.io.Serial;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,10 +28,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "tb_users", uniqueConstraints = { @UniqueConstraint(name = "un_email", columnNames = { "email" }) })
 public class Usuario implements UserDetails {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -57,103 +63,6 @@ public class Usuario implements UserDetails {
 	@JoinColumn(name = "fk_endereco")
 	private Endereco endereco;
 
-	public Usuario() {
-		super();
-	}
-	
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return true;
-		if (getClass() != obj.getClass())
-			return true;
-		Usuario other = (Usuario) obj;
-		return Objects.equals(id, other.id);
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public String getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
-	}
-
-	public Date getDataLogin() {
-		return dataLogin;
-	}
-
-	public void setDataLogin(Date dataLogin) {
-		this.dataLogin = dataLogin;
-	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-
-	public UsuarioRole getRole() {
-		return role;
-	}
-
-	public void setRole(UsuarioRole role) {
-		this.role = role;
-	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -171,7 +80,6 @@ public class Usuario implements UserDetails {
 			return List.of(new SimpleGrantedAuthority("ROLE_USER"));
 		}
 	}
-
 	@Override
 	public String getUsername() {
 		return this.email;

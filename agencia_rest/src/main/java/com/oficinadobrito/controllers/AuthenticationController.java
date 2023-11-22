@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.oficinadobrito.dtos.AuthenticationDTO;
 import com.oficinadobrito.entities.Usuario;
 import com.oficinadobrito.services.AuthenticationService;
-
-//@CrossOrigin(origins = { "http://localhost:3000","https://app.example.com" }, methods = { RequestMethod.OPTIONS, RequestMethod.GET, RequestMethod.PUT,
-//				RequestMethod.DELETE, RequestMethod.POST })
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController {

@@ -1,5 +1,7 @@
 package com.oficinadobrito.entities;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +15,19 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tb_origem_destino")
-public class OrigemDestino {
+public class OrigemDestino implements Serializable {
+	@Serial
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -38,74 +49,7 @@ public class OrigemDestino {
 	@OneToMany(mappedBy = "origem")
 	private List<Hospedagem> hospedagem= new ArrayList<>();
 
-	public OrigemDestino() {
-		super();
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public int getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
-	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
-	public List<PacoteViagem> getPacotes() {
-		return pacotes;
-	}
-
-	public void setPacotes(List<PacoteViagem> pacotes) {
-		this.pacotes = pacotes;
-	}
-
-	public List<Hospedagem> getHospedagem() {
-		return hospedagem;
-	}
-
-	public void setHospedagem(List<Hospedagem> hospedagem) {
-		this.hospedagem = hospedagem;
-	}
-
-	
-
 }

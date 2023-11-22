@@ -1,5 +1,7 @@
 package com.oficinadobrito.entities;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +15,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="tb_origem_destino")
-public class Hospedagem {
+public class Hospedagem implements Serializable {
+	@Serial
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -43,72 +53,7 @@ public class Hospedagem {
 	@OneToMany(mappedBy = "hospedagem")
 	private List<PacoteViagem>  pacotes= new ArrayList<>();
 
-	public Hospedagem() {
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
-	}
-
-	public int getDiaria() {
-		return diaria;
-	}
-
-	public void setDiaria(int diaria) {
-		this.diaria = diaria;
-	}
-
-	public double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(double preco) {
-		this.preco = preco;
-	}
-
-	public OrigemDestino getOrigem() {
-		return origem;
-	}
-
-	public void setOrigem(OrigemDestino origem) {
-		this.origem = origem;
-	}
-
-	public Fornecedor getFornecedor() {
-		return fornecedor;
-	}
-
-	public void setFornecedor(Fornecedor fornecedor) {
-		this.fornecedor = fornecedor;
-	}
-
-	public List<PacoteViagem> getPacotes() {
-		return pacotes;
-	}
-
-	public void setPacotes(List<PacoteViagem> pacotes) {
-		this.pacotes = pacotes;
-	}
-	
-	
 }

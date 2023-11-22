@@ -1,5 +1,6 @@
 package com.oficinadobrito.entities;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +12,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_administrador")
 public class Administrador extends Usuario {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "n_viagens_revisadas")
@@ -27,22 +33,6 @@ public class Administrador extends Usuario {
 	
 	public Administrador() {
 		super();
-	}
-
-	public Integer getnViagensRevisadas() {
-		return nViagensRevisadas;
-	}
-
-	public void setnViagensRevisadas(Integer nViagensRevisadas) {
-		this.nViagensRevisadas = nViagensRevisadas;
-	}
-
-	public List<PacoteViagem> getPacotes() {
-		return pacotes;
-	}
-
-	public void setPacotes(List<PacoteViagem> pacotes) {
-		this.pacotes = pacotes;
 	}
 
 	public static long getSerialversionuid() {

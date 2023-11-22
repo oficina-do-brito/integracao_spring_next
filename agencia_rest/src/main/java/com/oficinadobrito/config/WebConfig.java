@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer{
 	
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**")//qualquer requisição que vinher de fora iremos habilitar apartir do /** tudo depois da porta8080
+		registry.addMapping("/**")
 		.allowedOrigins("http://localhost:3000")
 		.allowCredentials(false)
         .allowedHeaders("*")
