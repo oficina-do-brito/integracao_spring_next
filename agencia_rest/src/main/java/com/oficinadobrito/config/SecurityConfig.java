@@ -37,6 +37,8 @@ public class SecurityConfig {
 					.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 					.authorizeHttpRequests(autorize -> autorize.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
 							.requestMatchers(HttpMethod.GET, "/pacotes").permitAll()
+							.requestMatchers(HttpMethod.GET, "/carrinhos").permitAll()
+							.requestMatchers(HttpMethod.GET, "/carrinhos/{id}/clientes").permitAll()
 							.requestMatchers(HttpMethod.GET, "/usuarios").permitAll()
 							.requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
 							.requestMatchers(HttpMethod.POST, "/usuarios").hasRole("ADMIN").anyRequest()

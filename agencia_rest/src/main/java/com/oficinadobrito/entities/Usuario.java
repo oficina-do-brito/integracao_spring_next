@@ -4,7 +4,6 @@ import java.io.Serial;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
