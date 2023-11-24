@@ -58,7 +58,7 @@ public class Usuario implements UserDetails {
 	@Enumerated(EnumType.STRING)
 	private UsuarioRole role;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_endereco")
 	private Endereco endereco;
 

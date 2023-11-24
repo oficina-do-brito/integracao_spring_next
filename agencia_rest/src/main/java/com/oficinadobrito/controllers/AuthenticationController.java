@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.oficinadobrito.dtos.AuthenticationDTO;
+import com.oficinadobrito.dtos.ResponseAuthDTO;
 import com.oficinadobrito.entities.Usuario;
 import com.oficinadobrito.services.AuthenticationService;
+import com.oficinadobrito.services.UsuarioService;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController {
@@ -20,14 +23,22 @@ public class AuthenticationController {
 	@Autowired
 	private AuthenticationService authenticationService;
 
+	@Autowired
+	private UsuarioService usuarioService;
+
 	@PostMapping("/login")
-	public ResponseEntity<String> login(@RequestBody AuthenticationDTO data) {
+	public ResponseEntity<ResponseAuthDTO> login(@RequestBody AuthenticationDTO data) {
 		var emailPassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
 
 		// cria um token baseado no email+senha
 		var auth = this.authenticationManager.authenticate(emailPassword);
 		var token = authenticationService.generateToken((Usuario) auth.getPrincipal());
-		return ResponseEntity.ok(token);
+		
+		// @Enumerated(EnumType.STRING) private UsuarioRole role;
+		Usuario u = this.usuarioService.findAuth(data.email(), data.password());
+		ResponseAuthDTO userAutenticado = new ResponseAuthDTO(u.getId(),u.getNome(),u.getEmail(),u.getTelefone(),u.getImagem(),"ADMIN",token);
+		
+		return ResponseEntity.ok().body(userAutenticado);
 	}
 
 }

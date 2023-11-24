@@ -7,7 +7,6 @@ export default function Navbar() {
   const route = useRouter();
   const [state, setState] = useState({});
   const userContex = useContext(ContextoGlobalUser);
-  
 
   const handleChangeEmail = (evento) => {
     setState({ email: evento.target.value, password: "" });
@@ -29,9 +28,10 @@ export default function Navbar() {
       });
 
       if (response.ok) {
-        const data = await response.text();
-        await userContex.setEstado( {...userContex.estado, isAuthenticated: true, user:`${state.email}`, token: data} );
-        console.log(userContex.estado);
+        const data = await response.json().then(data => data).catch(error=>console.log(error));
+        userContex.setEstado( {...userContex.estado, id:data.id, email:data.email, telefone: data.telefone, 
+          imagem:data.imagem,autorizacoes: data.autorizacoes, isAuthenticated: true, user: data.nome, token: data.token} );
+        //console.log(userContex.estado);
         handleClickFormNotVisible();
         route.push({pathname:"/manage"});
 

@@ -1,5 +1,10 @@
 import { useState, createContext } from "react";
 const authUser = {
+  id: 0,
+  email: "",
+  telefone: "",
+  imagem: "",
+  autorizacoes: "",
   isAuthenticated: false,
   user: null,
   token: null,
