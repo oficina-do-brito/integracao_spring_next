@@ -88,7 +88,7 @@ export default function Navbar() {
               <input type="password" className="form-control" id="floatingPassword" placeholder="Password" name="password" onChange={handleChangePassoword} />
               <label htmlFor="floatingPassword">Password</label>
             </div>
-            <Link className=".text-primary" href={"/"}>
+            <Link className=".text-primary" href={"/cadastre_se"}>
               Cadastre-se
             </Link>
             <div className="container d-flex">
